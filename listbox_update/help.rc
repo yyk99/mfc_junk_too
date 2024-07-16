@@ -1,0 +1,54 @@
+
+#include "resource.h"
+#include "afxres.h"
+
+
+
+
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_CAN
+#pragma code_page(932)
+#endif //_WIN32
+
+
+IDD_MAIN DIALOGEX MOVEABLE PURE LOADONCALL DISCARDABLE	200, 200, 234, 188
+STYLE DS_MODALFRAME | 0x0004 | WS_CAPTION | WS_SYSMENU | WS_POPUP
+CAPTION "NetvisorPro_V3"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Display", IDC_DISPLAY, 	120,160,46,12
+    PUSHBUTTON      "Cancel", IDCANCEL, 	176,160,46,12
+    CONTROL         "", IDC_LISTTAB, "SysTabControl32", 0x4000 | 0x0200 | 0x0400, 	7,5,220,143
+    CONTROL         "unvisible", IDC_STATIC1, "Static", SS_LEFT | NOT WS_VISIBLE | WS_GROUP, 	12,22,208,122
+END
+
+
+
+IDD_PAGE1 DIALOGEX MOVEABLE PURE LOADONCALL DISCARDABLE	0, 0, 200, 140
+STYLE 0x0004 | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Click the index entry you want, and  then click Display.", IDC_STATIC, 	9,4,180,8, SS_LEFT
+    LISTBOX         IDC_LISTBOX, 	6,18,200,100, LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | LBS_SORT | WS_VSCROLL | WS_TABSTOP
+END
+
+
+
+IDD_PAGE2 DIALOG 0, 0, 200, 140
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "To Be Determined", IDC_STATIC2, 	6,4,200,110
+END
+
+
+
+
+
+
+
+
+
+
+
+

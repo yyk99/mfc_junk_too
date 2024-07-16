@@ -185,6 +185,7 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="IconTabs.h" />
+    <ClInclude Include="IconTabsDialog.h" />
     <ClInclude Include="IconTabsDlg.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
@@ -192,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IconTabs.cpp" />
+    <ClCompile Include="IconTabsDialog.cpp" />
     <ClCompile Include="IconTabsDlg.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

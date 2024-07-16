@@ -59,6 +59,7 @@ CIconTabsDlg::CIconTabsDlg(CWnd* pParent /*=nullptr*/)
 void CIconTabsDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_ICONS_TAB1, m_iconTabs);
 }
 
 BEGIN_MESSAGE_MAP(CIconTabsDlg, CDialogEx)
@@ -72,7 +73,7 @@ END_MESSAGE_MAP()
 
 BOOL CIconTabsDlg::OnInitDialog()
 {
-	CDialogEx::OnInitDialog();
+ 	CDialogEx::OnInitDialog();
 
 	// Add "About..." menu item to system menu.
 
