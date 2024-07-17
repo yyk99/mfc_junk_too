@@ -21,4 +21,7 @@ protected:
     void DoDataExchange(CDataExchange* pDX) override;    // DDX/DDV support
 
     DECLARE_MESSAGE_MAP()
+
+    BOOL OnInitDialog() override;
+
 };
