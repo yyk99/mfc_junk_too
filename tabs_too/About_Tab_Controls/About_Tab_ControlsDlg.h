@@ -8,27 +8,29 @@
 // CAboutTabControlsDlg dialog
 class CAboutTabControlsDlg : public CDialogEx
 {
-// Construction
+    // Construction
 public:
-	CAboutTabControlsDlg(CWnd* pParent = nullptr);	// standard constructor
+    CAboutTabControlsDlg(CWnd* pParent = nullptr);	// standard constructor
 
-// Dialog Data
+    // Dialog Data
 #ifdef AFX_DESIGN_TIME
-	enum { IDD = IDD_ABOUT_TAB_CONTROLS_DIALOG };
+    enum { IDD = IDD_ABOUT_TAB_CONTROLS_DIALOG };
 #endif
 
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
-
-
-// Implementation
 protected:
-	HICON m_hIcon;
+    void DoDataExchange(CDataExchange* pDX) override;	// DDX/DDV support
 
-	// Generated message map functions
-	virtual BOOL OnInitDialog();
-	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
-	afx_msg void OnPaint();
-	afx_msg HCURSOR OnQueryDragIcon();
-	DECLARE_MESSAGE_MAP()
+
+    // Implementation
+protected:
+    HICON m_hIcon;
+
+    // Generated message map functions
+    virtual BOOL OnInitDialog();
+    afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
+    afx_msg void OnPaint();
+    afx_msg HCURSOR OnQueryDragIcon();
+    DECLARE_MESSAGE_MAP()
+public:
+    CTabCtrl m_ctlSysTabControl32;
 };
