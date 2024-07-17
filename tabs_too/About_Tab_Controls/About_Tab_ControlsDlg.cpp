@@ -101,10 +101,10 @@ BOOL CAboutTabControlsDlg::OnInitDialog()
     SetIcon(m_hIcon, FALSE);		// Set small icon
 #pragma endregion
     // TODO: Add extra initialization 	// Setup and create the tab control
+    _TCHAR* pszNames[] = { _T("Wood"), _T("Natural Gas"), _T("Kryptonite") };
+    int nTabs = sizeof(pszNames) / sizeof(*pszNames);
 #if 0
     {
-	    int nTabs = 3;
-	    _TCHAR* pszNames[] = { _T("Wood"), _T("Natural Gas"), _T("Kryptonite") };
 	    RECT rc;
 	    GetWindowRect(&rc);
 	    rc.right -= rc.left;
@@ -132,6 +132,18 @@ BOOL CAboutTabControlsDlg::OnInitDialog()
     }
 #else
     //m_ctlSysTabControl32.Create(TCS_TABS, );
+    
+    for (int i = 0; i < nTabs; i++)
+    {
+        TCITEM tie{};
+
+        tie.mask = TCIF_TEXT | TCIF_IMAGE;
+        tie.iImage = -1;
+        tie.pszText = pszNames[i];
+        tie.cchTextMax = (int)(_tcslen(pszNames[i]));
+
+        m_ctlSysTabControl32.InsertItem(i, pszNames[i]);
+    }
 #endif
     return TRUE;  // return TRUE  unless you set the focus to a control
 }
