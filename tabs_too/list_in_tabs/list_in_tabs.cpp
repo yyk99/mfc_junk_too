@@ -7,6 +7,8 @@
 #include "list_in_tabs.h"
 #include "list_in_tabsDlg.h"
 
+#include "resource.h"		// main symbols
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -40,6 +42,7 @@ ClistintabsApp theApp;
 
 BOOL ClistintabsApp::InitInstance()
 {
+	AfxOleInit();
     // InitCommonControlsEx() is required on Windows XP if an application
     // manifest specifies use of ComCtl32.dll version 6 or later to enable
     // visual styles.  Otherwise, any window creation will fail.

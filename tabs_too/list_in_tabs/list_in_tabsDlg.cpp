@@ -6,13 +6,18 @@
 #include "framework.h"
 #include "list_in_tabs.h"
 #include "list_in_tabsDlg.h"
+
+#include "OnlineSourcesDlg.h"
+
 #include "afxdialogex.h"
+
+#include "resource.h"		// main symbols
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
-
+#pragma region About dialog
 // CAboutDlg dialog used for App About
 
 class CAboutDlg : public CDialogEx
@@ -44,11 +49,9 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
-
+#pragma endregion About dialog
 
 // ClistintabsDlg dialog
-
-
 
 ClistintabsDlg::ClistintabsDlg(CWnd* pParent /*=nullptr*/)
     : CDialogEx(IDD_LIST_IN_TABS_DIALOG, pParent)
@@ -64,6 +67,10 @@ void ClistintabsDlg::DoDataExchange(CDataExchange* pDX)
 void ClistintabsDlg::OnOK()
 {
     TRACE("ClistintabsDlg::OnOK\n");
+
+    OnlineSourcesDlg sourceTabs;
+
+    sourceTabs.DoModal();
 }
 
 BEGIN_MESSAGE_MAP(ClistintabsDlg, CDialogEx)

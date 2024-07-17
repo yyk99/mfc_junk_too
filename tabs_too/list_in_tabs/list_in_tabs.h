@@ -8,8 +8,6 @@
 #   error "include 'pch.h' before including this file for PCH"
 #endif
 
-#include "resource.h"		// main symbols
-
 
 // ClistintabsApp:
 // See list_in_tabs.cpp for the implementation of this class
