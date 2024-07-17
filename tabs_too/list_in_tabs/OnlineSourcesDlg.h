@@ -10,10 +10,15 @@ class OnlineSourcesDlg : public CMFCPropertySheet
 public:
     OnlineSourcesDlg();
 
+
+    BOOL OnInitDialog() override;
+
     // Attributes
 public:
-    SourceListPage m_Page1;
-    SourceListPage m_Page2;
+    SourceListPage m_page1;
+    SourceListPage m_page2;
+
+    CImageList m_images;
 
     // Operations
 public:
