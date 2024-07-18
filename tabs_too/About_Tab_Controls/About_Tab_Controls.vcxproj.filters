@@ -38,7 +38,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="About_Tab_Controls.cpp">
+    <ClCompile Include="About_Tab_ControlsApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="About_Tab_ControlsDlg.cpp">
