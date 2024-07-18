@@ -4,13 +4,16 @@
 
 #pragma once
 
+#include "TabPage.h"
 
-// CAboutTabControlsDlg dialog
-class CAboutTabControlsDlg : public CDialogEx
+#include "CTabCtrlBase.h"
+
+// CustomTabControlsDlg dialog
+class CustomTabControlsDlg : public CDialogEx
 {
     // Construction
 public:
-    CAboutTabControlsDlg(CWnd* pParent = nullptr);	// standard constructor
+    CustomTabControlsDlg(CWnd* pParent = nullptr);	// standard constructor
 
     // Dialog Data
 #ifdef AFX_DESIGN_TIME
@@ -32,5 +35,10 @@ protected:
     afx_msg HCURSOR OnQueryDragIcon();
     DECLARE_MESSAGE_MAP()
 public:
-    CTabCtrl m_ctlSysTabControl32;
+    virtual BOOL OnChildNotify(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* pLResult);
+
+    CTabCtrlBase m_ctlSysTabControl32;
+    TabPage m_page1;
+    TabPage m_page2;
+    TabPage m_page3;
 };

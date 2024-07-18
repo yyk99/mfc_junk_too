@@ -2,32 +2,43 @@
 //
 
 #include "pch.h"
-#include "About_Tab_Controls.h"
+#include "CustomTabControls.h"
 #include "afxdialogex.h"
 #include "TabPage.h"
 
-
 // TabPage dialog
 
-IMPLEMENT_DYNAMIC(TabPage, CDialogEx)
+IMPLEMENT_DYNAMIC(TabPage, CPropertyPage)
 
-TabPage::TabPage(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_PAGE, pParent)
+TabPage::TabPage(UINT nIDCaption/* = 0*/, DWORD dwSize /*= sizeof(PROPSHEETPAGE)*/)
+	: CPropertyPage(IDD_PAGE, nIDCaption, nIDCaption, dwSize)
 {
-
 }
 
 TabPage::~TabPage()
 {
 }
 
-void TabPage::DoDataExchange(CDataExchange* pDX)
+BOOL TabPage::OnInitDialog()
 {
-	CDialogEx::DoDataExchange(pDX);
+    auto ok = __super::OnInitDialog();
+
+    if (auto sp = GetDlgItem(IDC_HELLO_THERE))
+    {
+        CString s;
+        sp->GetWindowText(s);
+        sp->SetWindowText((s + _T(" ... from ") + m_strCaption).GetString());
+    }
+
+    return ok;
 }
 
+void TabPage::DoDataExchange(CDataExchange* pDX)
+{
+	__super::DoDataExchange(pDX);
+}
 
-BEGIN_MESSAGE_MAP(TabPage, CDialogEx)
+BEGIN_MESSAGE_MAP(TabPage, CPropertyPage)
 END_MESSAGE_MAP()
 
 

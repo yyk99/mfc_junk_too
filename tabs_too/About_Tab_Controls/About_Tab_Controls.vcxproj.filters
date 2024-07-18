@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="About_Tab_Controls.h">
+    <ClInclude Include="CustomTabControls.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="About_Tab_ControlsDlg.h">
+    <ClInclude Include="CustomTabControlsDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="framework.h">
@@ -36,18 +36,24 @@
     <ClInclude Include="TabPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CTabCtrlBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="About_Tab_ControlsApp.cpp">
+    <ClCompile Include="CustomTabControls.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="About_Tab_ControlsDlg.cpp">
+    <ClCompile Include="CustomTabControlsDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TabPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CTabCtrlBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

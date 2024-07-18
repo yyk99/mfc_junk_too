@@ -4,24 +4,24 @@
 
 #include "pch.h"
 #include "framework.h"
-#include "About_Tab_Controls.h"
-#include "About_Tab_ControlsDlg.h"
+#include "CustomTabControls.h"
+#include "CustomTabControlsDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 
-// CAboutTabControlsApp
+// CustomTabControlsApp
 
-BEGIN_MESSAGE_MAP(CAboutTabControlsApp, CWinApp)
+BEGIN_MESSAGE_MAP(CustomTabControlsApp, CWinApp)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
 END_MESSAGE_MAP()
 
 
-// CAboutTabControlsApp construction
+// CustomTabControlsApp construction
 
-CAboutTabControlsApp::CAboutTabControlsApp()
+CustomTabControlsApp::CustomTabControlsApp()
 {
 	// support Restart Manager
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
@@ -31,15 +31,17 @@ CAboutTabControlsApp::CAboutTabControlsApp()
 }
 
 
-// The one and only CAboutTabControlsApp object
+// The one and only CustomTabControlsApp object
 
-CAboutTabControlsApp theApp;
+CustomTabControlsApp theApp;
 
 
-// CAboutTabControlsApp initialization
+// CustomTabControlsApp initialization
 
-BOOL CAboutTabControlsApp::InitInstance()
+BOOL CustomTabControlsApp::InitInstance()
 {
+    attachDebugConsole();
+
 	// InitCommonControlsEx() is required on Windows XP if an application
 	// manifest specifies use of ComCtl32.dll version 6 or later to enable
 	// visual styles.  Otherwise, any window creation will fail.
@@ -71,7 +73,7 @@ BOOL CAboutTabControlsApp::InitInstance()
 	// such as the name of your company or organization
 	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 
-	CAboutTabControlsDlg dlg;
+	CustomTabControlsDlg dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)

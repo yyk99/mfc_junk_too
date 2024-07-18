@@ -11,14 +11,14 @@
 #include "resource.h"		// main symbols
 
 
-// CAboutTabControlsApp:
+// CustomTabControlsApp:
 // See About_Tab_Controls.cpp for the implementation of this class
 //
 
-class CAboutTabControlsApp : public CWinApp
+class CustomTabControlsApp : public CWinApp
 {
 public:
-	CAboutTabControlsApp();
+	CustomTabControlsApp();
 
 // Overrides
 public:
@@ -29,4 +29,4 @@ public:
 	DECLARE_MESSAGE_MAP()
 };
 
-extern CAboutTabControlsApp theApp;
+extern CustomTabControlsApp theApp;
