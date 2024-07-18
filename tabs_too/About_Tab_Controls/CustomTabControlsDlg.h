@@ -8,12 +8,12 @@
 
 #include "CTabCtrlBase.h"
 
-// CAboutTabControlsDlg dialog
-class CAboutTabControlsDlg : public CDialogEx
+// CustomTabControlsDlg dialog
+class CustomTabControlsDlg : public CDialogEx
 {
     // Construction
 public:
-    CAboutTabControlsDlg(CWnd* pParent = nullptr);	// standard constructor
+    CustomTabControlsDlg(CWnd* pParent = nullptr);	// standard constructor
 
     // Dialog Data
 #ifdef AFX_DESIGN_TIME

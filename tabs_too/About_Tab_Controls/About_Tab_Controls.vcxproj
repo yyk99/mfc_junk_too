@@ -24,6 +24,7 @@
     <Keyword>MFCProj</Keyword>
     <RootNamespace>AboutTabControls</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>CustomTabControls</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -183,8 +184,8 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="About_Tab_Controls.h" />
-    <ClInclude Include="About_Tab_ControlsDlg.h" />
+    <ClInclude Include="CustomTabControls.h" />
+    <ClInclude Include="CustomTabControlsDlg.h" />
     <ClInclude Include="CTabCtrlBase.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
@@ -193,8 +194,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="About_Tab_ControlsApp.cpp" />
-    <ClCompile Include="About_Tab_ControlsDlg.cpp" />
+    <ClCompile Include="CustomTabControls.cpp" />
+    <ClCompile Include="CustomTabControlsDlg.cpp" />
     <ClCompile Include="CTabCtrlBase.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

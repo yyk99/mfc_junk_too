@@ -2,7 +2,7 @@
 //
 
 #include "pch.h"
-#include "About_Tab_Controls.h"
+#include "CustomTabControls.h"
 #include "afxdialogex.h"
 #include "TabPage.h"
 

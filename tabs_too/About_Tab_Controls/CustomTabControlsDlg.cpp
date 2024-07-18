@@ -4,9 +4,8 @@
 
 #include "pch.h"
 #include "framework.h"
-#include "About_Tab_Controls.h"
-#include "About_Tab_ControlsDlg.h"
-#include "afxdialogex.h"
+#include "CustomTabControls.h"
+#include "CustomTabControlsDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -45,11 +44,11 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// CAboutTabControlsDlg dialog
+// CustomTabControlsDlg dialog
 
 
 
-CAboutTabControlsDlg::CAboutTabControlsDlg(CWnd* pParent /*=nullptr*/)
+CustomTabControlsDlg::CustomTabControlsDlg(CWnd* pParent /*=nullptr*/)
     : CDialogEx(IDD_ABOUT_TAB_CONTROLS_DIALOG, pParent)
     , m_ctlSysTabControl32{}
     , m_page1(IDS_PAGE_1)
@@ -59,23 +58,23 @@ CAboutTabControlsDlg::CAboutTabControlsDlg(CWnd* pParent /*=nullptr*/)
     m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
-void CAboutTabControlsDlg::DoDataExchange(CDataExchange* pDX)
+void CustomTabControlsDlg::DoDataExchange(CDataExchange* pDX)
 {
     CDialogEx::DoDataExchange(pDX);
     DDX_Control(pDX, IDC_TAB1, m_ctlSysTabControl32);
     CONSOLE("here...");
 }
 
-BEGIN_MESSAGE_MAP(CAboutTabControlsDlg, CDialogEx)
+BEGIN_MESSAGE_MAP(CustomTabControlsDlg, CDialogEx)
     ON_WM_SYSCOMMAND()
     ON_WM_PAINT()
     ON_WM_QUERYDRAGICON()
 END_MESSAGE_MAP()
 
 
-// CAboutTabControlsDlg message handlers
+// CustomTabControlsDlg message handlers
 
-BOOL CAboutTabControlsDlg::OnInitDialog()
+BOOL CustomTabControlsDlg::OnInitDialog()
 {
     CDialogEx::OnInitDialog();
 
@@ -114,7 +113,7 @@ BOOL CAboutTabControlsDlg::OnInitDialog()
     return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
-void CAboutTabControlsDlg::OnSysCommand(UINT nID, LPARAM lParam)
+void CustomTabControlsDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
     if ((nID & 0xFFF0) == IDM_ABOUTBOX)
     {
@@ -131,7 +130,7 @@ void CAboutTabControlsDlg::OnSysCommand(UINT nID, LPARAM lParam)
 //  to draw the icon.  For MFC applications using the document/view model,
 //  this is automatically done for you by the framework.
 
-void CAboutTabControlsDlg::OnPaint()
+void CustomTabControlsDlg::OnPaint()
 {
     if (IsIconic())
     {
@@ -158,12 +157,12 @@ void CAboutTabControlsDlg::OnPaint()
 
 // The system calls this function to obtain the cursor to display while the user drags
 //  the minimized window.
-HCURSOR CAboutTabControlsDlg::OnQueryDragIcon()
+HCURSOR CustomTabControlsDlg::OnQueryDragIcon()
 {
     return static_cast<HCURSOR>(m_hIcon);
 }
 
-BOOL CAboutTabControlsDlg::OnChildNotify(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* pLResult)
+BOOL CustomTabControlsDlg::OnChildNotify(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* pLResult)
 {
     // TODO: Add your specialized code here and/or call the base class
     switch (message)
