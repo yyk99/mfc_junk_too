@@ -45,18 +45,7 @@ void CMyTabCtrl::AddPage(CPropertyPage* page)
     this->InsertItem(pos, page->m_pPSP->pszTitle);
     m_pages.push_back(page);
 
-    CRect rc;
-    GetClientRect(&rc);
-    CONSOLE_EVAL(rc);
-
-    AdjustRect(0, &rc);
-    CONSOLE("adjusted rc:" << rc);
-
-    //CRect rc;
-    //VERIFY(GetItemRect(pos, &rc));
-
     page->Create(page->m_pPSP->pszTemplate, this);
-    page->MoveWindow(rc);
 }
 
 void CMyTabCtrl::OnTcnSelchange(NMHDR* pNMHDR, LRESULT* pResult)
@@ -69,7 +58,22 @@ void CMyTabCtrl::OnTcnSelchange(NMHDR* pNMHDR, LRESULT* pResult)
 void
 CMyTabCtrl::ShowTab(int pos)
 {
-    m_pages[pos]->ShowWindow(SW_SHOW);
+    CRect rc;
+    GetClientRect(&rc);
+    CONSOLE_EVAL(rc);
+
+    AdjustRect(0, &rc);
+    CONSOLE("adjusted rc:" << rc);
+
+    for (int i = 0; i != m_pages.size(); ++i)
+    {
+        if (i == pos) {
+            m_pages[i]->MoveWindow(rc);
+            m_pages[i]->ShowWindow(SW_SHOW);
+        }
+        else
+            m_pages[i]->ShowWindow(SW_HIDE);
+    }
 }
 
 

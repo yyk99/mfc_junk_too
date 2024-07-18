@@ -6,7 +6,6 @@
 #include "afxdialogex.h"
 #include "TabPage.h"
 
-
 // TabPage dialog
 
 IMPLEMENT_DYNAMIC(TabPage, CPropertyPage)
@@ -38,7 +37,6 @@ void TabPage::DoDataExchange(CDataExchange* pDX)
 {
 	__super::DoDataExchange(pDX);
 }
-
 
 BEGIN_MESSAGE_MAP(TabPage, CPropertyPage)
 END_MESSAGE_MAP()
