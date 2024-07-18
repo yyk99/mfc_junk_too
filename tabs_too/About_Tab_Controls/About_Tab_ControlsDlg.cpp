@@ -12,6 +12,23 @@
 #define new DEBUG_NEW
 #endif
 
+#if _DEBUG
+#   include <iostream> // for CONSOLE(...)
+
+std::ostream& operator<<(std::ostream& ss, CSize const& tp)
+{
+    ss << "[" << tp.cx << "x" << tp.cy << "]";
+    return ss;
+}
+
+std::ostream& operator<<(std::ostream& ss, CRect const& tp)
+{
+    ss << "{" << tp.TopLeft() << ", " << tp.BottomRight() << ", size: " << tp.Size() << "}";
+    return ss;
+}
+
+#endif
+
 
 // CAboutDlg dialog used for App About
 
@@ -52,6 +69,10 @@ END_MESSAGE_MAP()
 
 CAboutTabControlsDlg::CAboutTabControlsDlg(CWnd* pParent /*=nullptr*/)
     : CDialogEx(IDD_ABOUT_TAB_CONTROLS_DIALOG, pParent)
+    , m_ctlSysTabControl32{}
+    , m_page1(IDS_PAGE_1)
+    , m_page2(IDS_PAGE_2)
+    , m_page3(IDS_PAGE_3)
 {
     m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -60,6 +81,7 @@ void CAboutTabControlsDlg::DoDataExchange(CDataExchange* pDX)
 {
     CDialogEx::DoDataExchange(pDX);
     DDX_Control(pDX, IDC_TAB1, m_ctlSysTabControl32);
+    CONSOLE("here...");
 }
 
 BEGIN_MESSAGE_MAP(CAboutTabControlsDlg, CDialogEx)
@@ -100,51 +122,13 @@ BOOL CAboutTabControlsDlg::OnInitDialog()
     SetIcon(m_hIcon, TRUE);			// Set big icon
     SetIcon(m_hIcon, FALSE);		// Set small icon
 #pragma endregion
-    // TODO: Add extra initialization 	// Setup and create the tab control
-    _TCHAR* pszNames[] = { _T("Wood"), _T("Natural Gas"), _T("Kryptonite") };
-    int nTabs = sizeof(pszNames) / sizeof(*pszNames);
-#if 0
-    {
-	    RECT rc;
-	    GetWindowRect(&rc);
-	    rc.right -= rc.left;
-	    rc.bottom -= rc.top;
-	    rc.top = rc.left = 0;
-	    m_ctlSysTabControl32.Create(m_hWnd, rc, _T(""), WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | TCS_TABS);
-	    TC_ITEM tie;
-	    for (int i = 0; i < nTabs; i++)
-	    {
-	        tie.mask = TCIF_TEXT | TCIF_IMAGE;
-	        tie.iImage = -1;
-	        tie.pszText = pszNames[i];
-	        tie.cchTextMax = (int)(_tcslen(pszNames[i]));
-	        if (TabCtrl_InsertItem(m_ctlSysTabControl32.m_hWnd, i, &tie) == -1)
-	        {
-	            // The insert failed; display an error box.
-	            ::MessageBox(NULL, _T("TabCtrl_InsertItem failed!"), NULL, MB_OK);
-	            return E_FAIL;
-	        }
-	    }
-	
-	    m_Display.Create(m_ctlSysTabControl32.m_hWnd);
-	    TabCtrl_SetCurSel(m_ctlSysTabControl32.m_hWnd, m_Display.m_curColor);
-	    m_Display.ShowWindow(TRUE);
-    }
-#else
-    //m_ctlSysTabControl32.Create(TCS_TABS, );
-    
-    for (int i = 0; i < nTabs; i++)
-    {
-        TCITEM tie{};
 
-        tie.mask = TCIF_TEXT | TCIF_IMAGE;
-        tie.iImage = -1;
-        tie.pszText = pszNames[i];
-        tie.cchTextMax = (int)(_tcslen(pszNames[i]));
+    m_ctlSysTabControl32.AddPage(&m_page1);
+    m_ctlSysTabControl32.AddPage(&m_page2);
+    m_ctlSysTabControl32.AddPage(&m_page3);
 
-        m_ctlSysTabControl32.InsertItem(i, pszNames[i]);
-    }
-#endif
+    m_ctlSysTabControl32.ShowTab(0);
+
     return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
@@ -195,5 +179,74 @@ void CAboutTabControlsDlg::OnPaint()
 HCURSOR CAboutTabControlsDlg::OnQueryDragIcon()
 {
     return static_cast<HCURSOR>(m_hIcon);
+}
+
+BOOL CAboutTabControlsDlg::OnChildNotify(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* pLResult)
+{
+    // TODO: Add your specialized code here and/or call the base class
+    switch (message)
+    {
+    case WM_NOTIFY:
+        CONSOLE("message: " << message << ", hex:" << std::hex << message);
+        break;
+    default:
+        break;
+    }
+
+    return CDialogEx::OnChildNotify(message, wParam, lParam, pLResult);
+}
+
+
+IMPLEMENT_DYNAMIC(CMyTabCtrl, CDialog)
+
+BEGIN_MESSAGE_MAP(CMyTabCtrl, CTabCtrl)
+    ON_WM_CTLCOLOR()
+    ON_WM_DESTROY()
+    ON_WM_LBUTTONDOWN()
+    ON_NOTIFY_REFLECT(TCN_SELCHANGE, OnTcnSelchange)
+//    ON_MESSAGE(WM_BUTTONPRESSED, ButtonPressed)
+//    ON_MESSAGE(WM_UPDOWN, UpDownButton)
+END_MESSAGE_MAP()
+
+CMyTabCtrl::~CMyTabCtrl()
+{
+    CONSOLE((void*)this);
+}
+
+/// @brief 
+/// @param page 
+void CMyTabCtrl::AddPage(CPropertyPage* page)
+{
+    ASSERT(page != NULL);
+
+    int pos = int(m_pages.size());
+    this->InsertItem(pos, page->m_pPSP->pszTitle);
+    m_pages.push_back(page);
+
+    CRect rc;
+    GetClientRect(&rc);
+    CONSOLE_EVAL(rc);
+
+    AdjustRect(0, &rc);
+    CONSOLE("adjusted rc:" << rc);
+
+    //CRect rc;
+    //VERIFY(GetItemRect(pos, &rc));
+
+    page->Create(page->m_pPSP->pszTemplate, this);
+    page->MoveWindow(rc);
+}
+
+void CMyTabCtrl::OnTcnSelchange(NMHDR* pNMHDR, LRESULT* pResult)
+{
+    CONSOLE("GetCurFocus: " << GetCurFocus());
+    int pos = GetCurFocus();
+    ShowTab(pos);
+}
+
+void
+CMyTabCtrl::ShowTab(int pos)
+{
+    m_pages[pos]->ShowWindow(SW_SHOW);
 }
 
