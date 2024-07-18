@@ -7,12 +7,12 @@
 
 #include <vector>
 
-class CMyTabCtrl : public CTabCtrl
+class CTabCtrlBase : public CTabCtrl
 {
-    DECLARE_DYNAMIC(CMyTabCtrl)
+    DECLARE_DYNAMIC(CTabCtrlBase)
 
 public:
-    virtual ~CMyTabCtrl();
+    virtual ~CTabCtrlBase();
 
     void AddPage(CPropertyPage *page);
 

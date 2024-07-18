@@ -6,7 +6,7 @@
 
 #include "TabPage.h"
 
-#include "CMyTabCtrl.h"
+#include "CTabCtrlBase.h"
 
 // CAboutTabControlsDlg dialog
 class CAboutTabControlsDlg : public CDialogEx
@@ -37,7 +37,7 @@ protected:
 public:
     virtual BOOL OnChildNotify(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* pLResult);
 
-    CMyTabCtrl m_ctlSysTabControl32;
+    CTabCtrlBase m_ctlSysTabControl32;
     TabPage m_page1;
     TabPage m_page2;
     TabPage m_page3;

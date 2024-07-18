@@ -36,7 +36,7 @@
     <ClInclude Include="TabPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CMyTabCtrl.h">
+    <ClInclude Include="CTabCtrlBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,7 +53,7 @@
     <ClCompile Include="TabPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CMyTabCtrl.cpp">
+    <ClCompile Include="CTabCtrlBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

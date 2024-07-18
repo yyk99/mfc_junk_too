@@ -4,7 +4,7 @@
 
 #include "pch.h"
 
-#include "CMyTabCtrl.h"
+#include "CTabCtrlBase.h"
 
 std::ostream& operator<<(std::ostream& ss, CSize const& tp)
 {
@@ -19,9 +19,9 @@ std::ostream& operator<<(std::ostream& ss, CRect const& tp)
 }
 
 
-IMPLEMENT_DYNAMIC(CMyTabCtrl, CDialog)
+IMPLEMENT_DYNAMIC(CTabCtrlBase, CDialog)
 
-BEGIN_MESSAGE_MAP(CMyTabCtrl, CTabCtrl)
+BEGIN_MESSAGE_MAP(CTabCtrlBase, CTabCtrl)
     ON_WM_CTLCOLOR()
     ON_WM_DESTROY()
     ON_WM_LBUTTONDOWN()
@@ -30,14 +30,14 @@ BEGIN_MESSAGE_MAP(CMyTabCtrl, CTabCtrl)
 //    ON_MESSAGE(WM_UPDOWN, UpDownButton)
 END_MESSAGE_MAP()
 
-CMyTabCtrl::~CMyTabCtrl()
+CTabCtrlBase::~CTabCtrlBase()
 {
     CONSOLE((void*)this);
 }
 
 /// @brief 
 /// @param page 
-void CMyTabCtrl::AddPage(CPropertyPage* page)
+void CTabCtrlBase::AddPage(CPropertyPage* page)
 {
     ASSERT(page != NULL);
 
@@ -48,7 +48,7 @@ void CMyTabCtrl::AddPage(CPropertyPage* page)
     page->Create(page->m_pPSP->pszTemplate, this);
 }
 
-void CMyTabCtrl::OnTcnSelchange(NMHDR* pNMHDR, LRESULT* pResult)
+void CTabCtrlBase::OnTcnSelchange(NMHDR* pNMHDR, LRESULT* pResult)
 {
     CONSOLE("GetCurFocus: " << GetCurFocus());
     int pos = GetCurFocus();
@@ -56,7 +56,7 @@ void CMyTabCtrl::OnTcnSelchange(NMHDR* pNMHDR, LRESULT* pResult)
 }
 
 void
-CMyTabCtrl::ShowTab(int pos)
+CTabCtrlBase::ShowTab(int pos)
 {
     CRect rc;
     GetClientRect(&rc);
