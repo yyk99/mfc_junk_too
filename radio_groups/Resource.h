@@ -9,6 +9,8 @@
 #define IDR_MAINFRAME                   128
 #define IDC_RADIO1                      1000
 #define IDC_RADIO2                      1001
+#define IDC_RADIO3                      1002
+#define IDC_RADIO4                      1003
 
 // Next default values for new objects
 // 
