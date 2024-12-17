@@ -1,4 +1,8 @@
 .vs/
 x64/
+Debug/
+Release/
+*.vcxproj.user
 *.aps
 *.user
+archive/
