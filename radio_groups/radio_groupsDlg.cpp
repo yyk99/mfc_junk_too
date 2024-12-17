@@ -8,6 +8,8 @@
 #include "radio_groupsDlg.h"
 #include "afxdialogex.h"
 
+#include "debuggingconsole.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -65,6 +67,10 @@ BEGIN_MESSAGE_MAP(CradiogroupsDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_RADIO1, &CradiogroupsDlg::OnBnClickedRadio1)
+	ON_BN_CLICKED(IDC_RADIO2, &CradiogroupsDlg::OnBnClickedRadio1)
+	ON_BN_CLICKED(IDC_RADIO3, &CradiogroupsDlg::OnBnClickedRadio1)
+	ON_BN_CLICKED(IDC_RADIO4, &CradiogroupsDlg::OnBnClickedRadio1)
 END_MESSAGE_MAP()
 
 
@@ -153,3 +159,17 @@ HCURSOR CradiogroupsDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void CradiogroupsDlg::OnBnClickedRadio1()
+{
+	CONSOLE("Here...");
+	if (auto rb1 = (CButton*)GetDlgItem(IDC_RADIO1))
+		CONSOLE_EVAL(rb1->GetState());
+    if (auto rb2 = (CButton*)GetDlgItem(IDC_RADIO2))
+        CONSOLE_EVAL(rb2->GetState());
+    if (auto rb3 = (CButton*)GetDlgItem(IDC_RADIO3))
+        CONSOLE_EVAL(rb3->GetState());
+    if (auto rb4 = (CButton*)GetDlgItem(IDC_RADIO4))
+        CONSOLE_EVAL(rb4->GetState());
+}

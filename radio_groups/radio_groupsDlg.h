@@ -8,27 +8,29 @@
 // CradiogroupsDlg dialog
 class CradiogroupsDlg : public CDialogEx
 {
-// Construction
+    // Construction
 public:
-	CradiogroupsDlg(CWnd* pParent = nullptr);	// standard constructor
+    CradiogroupsDlg(CWnd* pParent = nullptr);
 
-// Dialog Data
+    // Dialog Data
 #ifdef AFX_DESIGN_TIME
-	enum { IDD = IDD_RADIO_GROUPS_DIALOG };
+    enum { IDD = IDD_RADIO_GROUPS_DIALOG };
 #endif
 
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
-
-
-// Implementation
 protected:
-	HICON m_hIcon;
+    void DoDataExchange(CDataExchange* pDX) override;
 
-	// Generated message map functions
-	virtual BOOL OnInitDialog();
-	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
-	afx_msg void OnPaint();
-	afx_msg HCURSOR OnQueryDragIcon();
-	DECLARE_MESSAGE_MAP()
+
+    // Implementation
+protected:
+    HICON m_hIcon;
+
+    // Generated message map functions
+    virtual BOOL OnInitDialog();
+    afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
+    afx_msg void OnPaint();
+    afx_msg HCURSOR OnQueryDragIcon();
+    DECLARE_MESSAGE_MAP()
+public:
+    afx_msg void OnBnClickedRadio1();
 };

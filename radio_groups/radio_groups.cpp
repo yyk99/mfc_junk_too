@@ -7,6 +7,8 @@
 #include "radio_groups.h"
 #include "radio_groupsDlg.h"
 
+#include "debuggingconsole.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -40,6 +42,8 @@ CradiogroupsApp theApp;
 
 BOOL CradiogroupsApp::InitInstance()
 {
+	attachDebugConsole();
+
 	// InitCommonControlsEx() is required on Windows XP if an application
 	// manifest specifies use of ComCtl32.dll version 6 or later to enable
 	// visual styles.  Otherwise, any window creation will fail.
